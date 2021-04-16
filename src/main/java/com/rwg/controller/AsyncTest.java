@@ -9,7 +9,7 @@ public class AsyncTest
     public void test3() throws Exception {
         System.out.println("main函数开始执行");
         longtime();
-        System.out.println("main函数执行结束");
+        System.out.println("main       函数执行结束");
     }
 
     @Async
