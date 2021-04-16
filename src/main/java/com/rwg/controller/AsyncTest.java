@@ -20,6 +20,6 @@ public class AsyncTest
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        System.out.println("完成啦");
+        System.out.println("完                                             成啦");
     }
 }
