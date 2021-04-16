@@ -14,7 +14,7 @@ public class AsyncTest
 
     @Async
     public void longtime() {
-        System.out.println("我在执行 一项耗时任务");
+        System.out.println("我在执行一项耗时任务");
         try {
             Thread.sleep(5000);
         } catch (InterruptedException e) {
