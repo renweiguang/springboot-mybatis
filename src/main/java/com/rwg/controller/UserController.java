@@ -1,6 +1,8 @@
 package com.rwg.controller;
 
 import com.alibaba.fastjson.JSONObject;
+import com.rwg.entity.AliGetTokenReqDTO;
+import com.rwg.entity.AliGetTokenResDTO;
 import com.rwg.entity.User;
 import com.rwg.service.UserService;
 import com.rwg.service.UserServiceImpl;
@@ -235,5 +237,41 @@ public class UserController
         log.info("影响的行数为:{}", column);
         log.info("返回插入的主键值为:{}", user.getId());
         return user.getId();
+    }
+
+    @PostMapping(value ="/getToken" ,produces = "application/json;charset=UTF-8")
+    public AliGetTokenResDTO getToken(@RequestBody AliGetTokenReqDTO aliReqDTO)
+    {
+        AliGetTokenResDTO aliResDTO;
+
+        User user = User.builder()
+                .name(aliReqDTO.getUserName())
+                .pwd(aliReqDTO.getPassWord())
+                .build();
+
+        boolean login = userService.login(user);
+
+        // 如果登录成功
+        if (login)
+        {
+            aliResDTO = AliGetTokenResDTO.builder()
+                    .success(true)
+                    .code("200")
+                    .message(null)
+                    .requestId("EBF5D894-E920-4C6E-BCD3-A803AD5FDD6C")
+                    .data(null)
+                    .build();
+        }
+        else
+        {
+            aliResDTO = AliGetTokenResDTO.builder()
+                    .success(false)
+                    .code("500")
+                    .message(null)
+                    .requestId(null)
+                    .data(null)
+                    .build();
+        }
+        return aliResDTO;
     }
 }

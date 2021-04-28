@@ -23,6 +23,7 @@ public class AdminInterceptor implements HandlerInterceptor
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
     {
+        //需保证调用时，公用同一个httpClient（CloseableHttpClient） 才能保存session，访问此接口
         System.out.println("执行了TestInterceptor的preHandle方法");
 
         // 统一拦截（查询当前session是否存在user）(这里user会在每次登陆成功后，写入session)

@@ -9,17 +9,17 @@ public class AsyncTest
     public void test3() throws Exception {
         System.out.println("main函数开始执行");
         longtime();
-        System.out.println("新增功能了 。。。。。。。。。。。。。。。。");
+        System.out.println("新增功能了。。。。。。。。。。。。。。。。");
     }
 
     @Async
     public void longtime() {
-        System.out.println("我在执行   一项耗时任务");
+        System.out.println("我在执行一项耗时任务");
         try {
             Thread.sleep(5000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        System.out.println("完                                             成啦");
+        System.out.println("完成啦");
     }
 }
