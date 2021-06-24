@@ -149,7 +149,8 @@ public class UserController
     @PostMapping("/addUserList")
     public String addUserList(@RequestBody List<User> userList)
     {
-        System.out.println(JSONObject.toJSONString(userList.get(0)));
+        System.out.println(userList);
+        System.out.println(JSONObject.toJSONString(userList));
         userList.stream().forEach(r -> userService.addUser(r));
         return "addUserList";
     }
@@ -162,6 +163,17 @@ public class UserController
         return "addUser";
     }
 
+    @PostMapping("/addUser1")
+    public String addUser(@RequestBody String jsonString)
+    {
+
+        JSONObject jsonObject = JSONObject.parseObject(jsonString);
+
+        User user1 = User.builder().name(jsonObject.getString("name")).pwd(jsonObject.getString("pwd")).build();
+        userService.addUser(user1);
+        System.out.println("addUser方法執行完了");
+        return "addUser";
+    }
 
     @PostMapping("/addJsonStringUser")
     public String addJsonStringUser(@RequestBody String jsonStringUser)
@@ -175,16 +187,14 @@ public class UserController
         return "addUser";
     }
 
-
     @PostMapping("/addJsonListStringUser")
     public String addJsonListStringUser(@RequestBody String jsonStringUser)
     {
-        List<User> userList = JSONObject.parseArray(jsonStringUser,User.class);
-        userList.stream().forEach(r ->  userService.addUser(r));
+        List<User> userList = JSONObject.parseArray(jsonStringUser, User.class);
+        userList.stream().forEach(r -> userService.addUser(r));
         System.out.println("addUser方法執行完了");
         return "addUser";
     }
-
 
     @PostMapping("/selectRecByPwd")
     public List<User> selectRecByPwd(@RequestBody String pwd)
@@ -239,7 +249,7 @@ public class UserController
         return user.getId();
     }
 
-    @PostMapping(value ="/getToken" ,produces = "application/json;charset=UTF-8")
+    @PostMapping(value = "/getToken", produces = "application/json;charset=UTF-8")
     public AliGetTokenResDTO getToken(@RequestBody AliGetTokenReqDTO aliReqDTO)
     {
         AliGetTokenResDTO aliResDTO;

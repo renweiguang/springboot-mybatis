@@ -68,11 +68,17 @@
         </foreach>
     </select>
 
+    <!--<select id="testLike" resultType="com.rwg.entity.User">-->
+        <!--select *-->
+        <!--from user-->
+        <!--where pwd like CONCAT('%', "R110", '%')-->
+          <!--and pwd not like CONCAT('%', "R110108", '%')-->
+    <!--</select>-->
+
     <select id="testLike" resultType="com.rwg.entity.User">
-        select *
-        from user
-        where pwd like CONCAT('%', "R110", '%')
-          and pwd not like CONCAT('%', "R110108", '%')
+    select *
+    from user
+    where pwd like CONCAT('%',"R110105",'%') and pwd like CONCAT('%',"R110106",'%');
     </select>
 
     <insert id="insertReturnPrimaryKey" useGeneratedKeys="true" keyProperty="Id"
