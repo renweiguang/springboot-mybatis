@@ -45,7 +45,8 @@ public class UserController
     private String serverPort;
 
     @Autowired
-    private UserServiceImpl userService;
+    @Qualifier("user")
+    private UserService userService;
 
     /**
      * 一个接口，两个实现类实现一个接口，那么只需要在两个实现类上面，定义@Service(“person”/“user”)
@@ -158,6 +159,8 @@ public class UserController
     @PostMapping("/addUser")
     public String addUser(@RequestBody User user)
     {
+        String a = JSONObject.toJSONString(user);
+        System.out.println(a);
         userService.addUser(user);
         System.out.println("addUser方法執行完了");
         return "addUser";
@@ -246,6 +249,20 @@ public class UserController
         int column = userService.insertReturnPrimaryKey(user);
         log.info("影响的行数为:{}", column);
         log.info("返回插入的主键值为:{}", user.getId());
+        return user.getId();
+    }
+
+    /**
+     * 普通的insert，直接获取ID 会返回0，而上面会返回Id
+     * @return
+     */
+    @GetMapping("/insertUser")
+    public int insertUser()
+    {
+        User user = new User();
+        user.setName("rwgg11223344");
+        user.setPwd("11");
+        userService.insertUser(user);
         return user.getId();
     }
 
