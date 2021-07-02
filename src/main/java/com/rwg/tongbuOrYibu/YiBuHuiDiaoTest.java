@@ -7,14 +7,19 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.concurrent.Future;
 
 @RestController
-class YiBuHuiDiaoTest{
+class YiBuHuiDiaoTest
+{
     @Autowired
     MyTaskYiBuHuiDiao myTask;
+
     @GetMapping("/testYiBuHuiDiao")
-    public void contextLoads() throws Exception {
-            /*myTask.doTaskOne();
-            myTask.doTaskTwo();
-            myTask.doTaskThree();*/
+    public void contextLoads() throws Exception
+    {
+        /*
+         * myTask.doTaskOne();
+         * myTask.doTaskTwo();
+         * myTask.doTaskThree();
+         */
         long start = System.currentTimeMillis();
         Future<String> task1 = myTask.doTaskOne();
         Future<String> task2 = myTask.doTaskTwo();
@@ -26,4 +31,3 @@ class YiBuHuiDiaoTest{
         System.out.println("任务全部完成，总耗时：" + (end - start) + "毫秒");
     }
 }
-

@@ -62,5 +62,9 @@ public class PerSonServiceImpl implements UserService
     {
         return null;
     }
+    @Override public int insertUser(User user)
+    {
+        return 0;
+    }
 
 }

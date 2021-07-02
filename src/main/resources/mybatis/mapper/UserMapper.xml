@@ -78,11 +78,16 @@
     <select id="testLike" resultType="com.rwg.entity.User">
     select *
     from user
-    where pwd like CONCAT('%',"R110105",'%') and pwd like CONCAT('%',"R110106",'%');
+    where pwd like CONCAT('%',"R110105",'%') or pwd like CONCAT('%',"R110106",'%');
     </select>
 
     <insert id="insertReturnPrimaryKey" useGeneratedKeys="true" keyProperty="Id"
             parameterType="com.rwg.entity.User">
+        INSERT INTO user(name, pwd)
+        values (#{name}, #{pwd})
+    </insert>
+
+    <insert id="insertUser" parameterType="com.rwg.entity.User">
         INSERT INTO user(name, pwd)
         values (#{name}, #{pwd})
     </insert>

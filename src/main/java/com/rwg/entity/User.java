@@ -1,5 +1,6 @@
 package com.rwg.entity;
 
+import com.alibaba.fastjson.annotation.JSONField;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -13,7 +14,8 @@ public class User
 {
     private int id;
 
-    protected String name;
+    @JSONField(name = "Name")
+    private String name;
 
     private String pwd;
 }

@@ -31,6 +31,8 @@ public interface UserMapper
 
     int insertReturnPrimaryKey(User user);
 
+    int insertUser(User user);
+
     User selectByUserAndPassword(User user);
 
     List<User> selectRecByPwd(@Param("pwd") String pwd);

@@ -14,7 +14,6 @@ public class UserServiceImpl implements UserService
     @Autowired
     private UserMapper userMapper;
 
-
     @Override
     public List<User> queryUserList()
     {
@@ -66,6 +65,13 @@ public class UserServiceImpl implements UserService
     {
         return userMapper.insertReturnPrimaryKey(user);
     }
+
+    @Override
+    public int insertUser(User user)
+    {
+        return userMapper.insertUser(user);
+    }
+
     public boolean login(User user)
     {
         if (userMapper.selectByUserAndPassword(user) != null)
@@ -77,11 +83,11 @@ public class UserServiceImpl implements UserService
             return false;
         }
     }
-    @Override public String testServiceKuoHao()
+    @Override
+    public String testServiceKuoHao()
     {
         return "user";
     }
-
 
     @Override
     public List<User> selectRecByPwd(String pwd)

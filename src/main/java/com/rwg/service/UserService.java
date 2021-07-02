@@ -33,4 +33,6 @@ public interface UserService
 
     List<User> selectRecByPwd(String pwd);
 
+    int insertUser(User user);
+
 }
