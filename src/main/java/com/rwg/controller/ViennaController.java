@@ -10,6 +10,15 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.concurrent.ExecutionException;
 
+/**
+ * 模仿维也纳下单模块，异步下单直接返回新订单的状态。
+ *
+ *
+ * 使用线程池下单。。。
+ */
+
+
+
 @Slf4j
 @RestController
 @RequestMapping("order")

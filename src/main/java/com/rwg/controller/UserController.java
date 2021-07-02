@@ -5,7 +5,6 @@ import com.rwg.entity.AliGetTokenReqDTO;
 import com.rwg.entity.AliGetTokenResDTO;
 import com.rwg.entity.User;
 import com.rwg.service.UserService;
-import com.rwg.service.UserServiceImpl;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
