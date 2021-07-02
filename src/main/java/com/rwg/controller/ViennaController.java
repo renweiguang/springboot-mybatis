@@ -1,8 +1,10 @@
 package com.rwg.controller;
 
+import com.rwg.config.JbossConfig;
 import com.rwg.service.ViennaService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -17,8 +19,6 @@ import java.util.concurrent.ExecutionException;
  * 使用线程池下单。。。哈哈哈
  */
 
-
-
 @Slf4j
 @RestController
 @RequestMapping("order")
@@ -27,15 +27,19 @@ public class ViennaController
     @Autowired
     private ViennaService viennaService;
 
+    //e
+    @Autowired
+    JbossConfig config;
+
     @PostMapping("/testBooking")
     public String testBook(@RequestParam(name = "order") String order)
     {
+        log.info(config.getUsername());
         String returnString = viennaService.hotelOrderBooking();
         log.info(returnString);
 
         return returnString;
     }
-
 
     @PostMapping("/returnTestBooking")
     public String returnTestBook(@RequestParam(name = "order") String order)
