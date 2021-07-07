@@ -15,7 +15,7 @@ public class PoolController
     private BootService bootService;
 
     @RequestMapping("/pool")
-    public String pool()
+    public String pool() throws InterruptedException
     {
         for (int i = 0; i < 100; i++)
         {

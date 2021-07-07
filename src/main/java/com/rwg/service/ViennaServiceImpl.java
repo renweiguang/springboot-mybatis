@@ -45,7 +45,10 @@ public class ViennaServiceImpl implements ViennaService
     public String returnHotelOrderBooking() throws ExecutionException, InterruptedException
     {
 
+        // ExecutorService threadPool = Executors.newFixedThreadPool(1);
         List<Future<Integer>> futures = new ArrayList<>();
+        // 这个countDownLatch的数量应保持和线程数量一致，才不会导致阻塞，因为利用的自定义线程池，
+        // 没法准确知道线程实际开的数量，导出偶尔阻塞，建议使用newFixedThreadPool
         CountDownLatch countDownLatch = new CountDownLatch(1);
 
         Future<Integer> future = viennaBookingPool.submit(() ->
@@ -82,7 +85,5 @@ public class ViennaServiceImpl implements ViennaService
         });
 
         return String.valueOf(future.get());
-
     }
-
 }

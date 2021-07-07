@@ -27,7 +27,7 @@ public class ViennaController
     @Autowired
     private ViennaService viennaService;
 
-    //e
+    // 将配置文件置于外部
     @Autowired
     JbossConfig config;
 
