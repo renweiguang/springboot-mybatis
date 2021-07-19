@@ -153,7 +153,7 @@ public class AliController
     @PostMapping("/loginByToken2")
     public String loginByToken2(@RequestParam Map<String, String> map)
     {
-        log.info("app_key  : " + map.get("app_key"));
+        log.info("app_key                                              : " + map.get("app_key"));
         log.info(JSONObject.toJSONString(map));
         // log.info(appKey);
         // log.info(xzToken);
