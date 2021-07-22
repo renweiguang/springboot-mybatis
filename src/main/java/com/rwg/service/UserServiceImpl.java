@@ -41,9 +41,9 @@ public class UserServiceImpl implements UserService
         return userMapper.deleteUser(id);
     }
     @Override
-    public List<User> queryListDemo(List<Integer> list)
+    public List<User> queryListDemo(List<Integer> list1)
     {
-        return userMapper.queryListDemo(list);
+        return userMapper.queryListDemo(list1);
     }
     @Override
     public List<User> testArray(int[] IdList)

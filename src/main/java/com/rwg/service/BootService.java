@@ -38,7 +38,6 @@ public class BootService
 
     public int testPoolTaskExecutor(int n) throws InterruptedException, ExecutionException
     {
-
         List<Future<Integer>> futures = new ArrayList<Future<Integer>>();
         CountDownLatch countDownLatch = new CountDownLatch(n);
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");

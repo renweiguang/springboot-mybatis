@@ -158,6 +158,7 @@ public class UserController
     @PostMapping("/addUser")
     public String addUser(@RequestBody User user)
     {
+        System.out.println(user);
         String a = JSONObject.toJSONString(user);
         System.out.println(a);
         userService.addUser(user);

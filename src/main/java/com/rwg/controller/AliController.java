@@ -117,7 +117,7 @@ public class AliController
     @PostMapping("/loginByToken")
     public String loginByToken(@RequestParam("app_key") String appKey, @RequestParam("xz_token") String xzToken,
             @RequestParam("sign") String sign,
-            @RequestParam("app_id") String appId, @RequestParam("timestamp") String timeStamp)
+            @RequestParam("app_id") String  appId, @RequestParam("timestamp") String timeStamp)
     {
         log.info(appKey);
         log.info(xzToken);
