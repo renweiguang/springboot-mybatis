@@ -113,7 +113,7 @@ public class UserController
     public Map testHashMapResult(@RequestParam(name = "name") String name,
             @RequestParam(defaultValue = "100") String age)
     {
-        HashMap<Integer, String> hashMap = new HashMap();
+        HashMap<Integer, String> hashMap =  new HashMap();
         hashMap.put(1, name);
         hashMap.put(2, age);
         hashMap.put(3, age);
