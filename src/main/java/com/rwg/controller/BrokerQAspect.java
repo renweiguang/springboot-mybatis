@@ -28,7 +28,7 @@ public class BrokerQAspect
     @Before("BrokerAspect()")
     public void doBeforeGame()
     {
-        System.out.println("经纪人正在处理球星赛前事务！");
+        System.out.println("经 纪人正在处理球星赛前事务！");
     }
 
     /**
