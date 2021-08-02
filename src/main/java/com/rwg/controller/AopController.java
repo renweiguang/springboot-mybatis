@@ -26,7 +26,7 @@ public class AopController
     @RequestMapping(value = "/Antetokounmpo")
     public void Antetokounmpo()
     {
-        System.out.println("字母哥上场打球了！！");
+        System.out.println("字母哥                     上场打球了！！");
     }
 
     @RequestMapping(value = "/Jokic")
