@@ -14,31 +14,22 @@ import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 
 @Service
-public class BootService
-{
+public class BootService {
     @Resource(name = "defaultThreadPool")
     private ThreadPoolTaskExecutor poolTaskExecutor;
 
     @Async
-    public void testPool()
-    {
+    public void testPool() {
         System.out.println("线程名称：" + Thread.currentThread().getName());
     }
 
-    public void testNoPool()
-    {
-        System.out.println("线程名称：" + Thread.currentThread().getName());
-    }
-
-    public int testPoolTaskExecutor(int n) throws InterruptedException, ExecutionException
-    {
+    public int testPoolTaskExecutor(int n) throws InterruptedException, ExecutionException {
 
         List<Future<Integer>> futures = new ArrayList<Future<Integer>>();
         CountDownLatch countDownLatch = new CountDownLatch(n);
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         int sum = 0;
-        for (int i = 0; i < n; i++)
-        {
+        for (int i = 0; i < n; i++) {
             final int index = i;
             final Future<Integer> future = poolTaskExecutor.submit(() ->
             {
@@ -59,10 +50,8 @@ public class BootService
         /**
          * 这个例子完美展现future 如果get不到结果，会阻塞。
          */
-        for (Future<Integer> future : futures)
-        {
-            if (!future.isDone())
-            {
+        for (Future<Integer> future : futures) {
+            if (!future.isDone()) {
                 System.out.println("资源还没有准备好");
             }
             System.out.println(future.get());

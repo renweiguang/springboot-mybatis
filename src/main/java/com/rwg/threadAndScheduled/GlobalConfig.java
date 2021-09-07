@@ -13,7 +13,7 @@ public class GlobalConfig
     {
         ThreadPoolTaskExecutor threadPoolTaskExecutor = new ThreadPoolTaskExecutor();
         // 核心线程数量
-        threadPoolTaskExecutor.setCorePoolSize(3);
+        threadPoolTaskExecutor.setCorePoolSize(2);
         // 最大线程数量
         threadPoolTaskExecutor.setMaxPoolSize(5);
         // 队列中最大任务数

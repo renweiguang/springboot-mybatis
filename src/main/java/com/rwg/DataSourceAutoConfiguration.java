@@ -17,9 +17,9 @@ public class DataSourceAutoConfiguration
     {
         DataSourceBuilder dataSourceBuilder = DataSourceBuilder.create();
         dataSourceBuilder.username("root");
-        dataSourceBuilder.password("123456");
+        dataSourceBuilder.password("root");
         dataSourceBuilder
-                .url("jdbc:mysql://192.168.128.80:3306/mybatis?useSSL=false&useUnicode=true&characterEncoding=utf-8&serverTimezone=GMT%2B8");
+                .url("jdbc:mysql://127.0.0.1:3306/mybatis?useSSL=false&useUnicode=true&characterEncoding=utf-8&serverTimezone=GMT%2B8");
         dataSourceBuilder.driverClassName("com.mysql.cj.jdbc.Driver");
         return dataSourceBuilder.build();
     }
