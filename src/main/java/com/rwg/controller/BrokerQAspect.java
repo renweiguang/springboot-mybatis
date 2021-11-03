@@ -20,7 +20,7 @@ public class BrokerQAspect
      * 定义切入点，切入点为com.xyj.controller.AopController中的所有函数
      *通过@Pointcut注解声明频繁使用的切点表达式
      */
-    @Pointcut("execution(public * com.rwg.controller.AopController.curry(..)))")
+    @Pointcut("execution(public * com.rwg.controller.AopController.*(..)))")
 
     public void BrokerAspect()
     {
