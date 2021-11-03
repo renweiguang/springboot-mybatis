@@ -153,10 +153,10 @@ public class UserController {
     }
 
     @PostMapping("/addUser1")
-    public String addUser(@RequestBody String jsonString) {
-
-        JSONObject jsonObject = JSONObject.parseObject(jsonString);
-
+    public String addUser(@RequestBody JSONObject jsonObject) {
+//        System.out.println(jsonString);
+//
+//        JSONObject jsonObject = JSONObject.parseObject(jsonString);
         User user1 = User.builder().name(jsonObject.getString("name")).pwd(jsonObject.getString("pwd")).build();
         userService.addUser(user1);
         System.out.println("addUser方法執行完了");
