@@ -19,8 +19,16 @@ public class BootService {
     @Resource(name = "defaultThreadPool")
     private ThreadPoolTaskExecutor poolTaskExecutor;
 
+    /**
+     * 开始提供了@Async注解，该注解可以被标注在方法上，以便异步地调用该方法。
+     * 调用者将在调用时立即返回，方法的实际执行将提交给Spring TaskExecutor的任务中，由指定的线程池中的线程执行。
+     * @throws InterruptedException
+     */
     @Async
     public void testPool() {
+    public void testPool() throws InterruptedException
+    {
+        Thread.sleep(2000);
         System.out.println("线程名称：" + Thread.currentThread().getName());
     }
 

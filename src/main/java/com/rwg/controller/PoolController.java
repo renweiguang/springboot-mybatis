@@ -18,6 +18,10 @@ public class PoolController {
     @RequestMapping("/pool")
     public String pool() {
         for (int i = 0; i < 100; i++) {
+    public String pool() throws InterruptedException
+    {
+        for (int i = 0; i < 100; i++)
+        {
             bootService.testPool();
         }
         System.out.println("pool start");

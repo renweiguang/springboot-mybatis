@@ -6,7 +6,10 @@ import org.aspectj.lang.annotation.AfterThrowing;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
+import org.springframework.core.MethodParameter;
 import org.springframework.stereotype.Component;
+
+import javax.xml.bind.SchemaOutputResolver;
 
 @Aspect
 @Component
@@ -16,7 +19,7 @@ public class BrokerQAspect
      * 定义切入点，切入点为com.xyj.controller.AopController中的所有函数
      *通过@Pointcut注解声明频繁使用的切点表达式
      */
-    @Pointcut("execution(public * com.rwg.controller.AopController.*(..)))")
+    @Pointcut("execution(public * com.rwg.controller.AopController.curry(..)))")
 
     public void BrokerAspect()
     {
@@ -26,8 +29,17 @@ public class BrokerQAspect
      * @description  在连接点执行之前执行的通知
      */
     @Before("BrokerAspect()")
-    public void doBeforeGame()
+    public void doBeforeGame(JoinPoint joinPoint)
     {
+        String methodName = joinPoint.getSignature().getName();
+        System.out.println(methodName);
+
+
+        Object[] args = joinPoint.getArgs();
+        for (int i=0; i<args.length; i++){
+            System.out.println(args[i]);
+        }
+        System.out.println("经纪人正在处理球星赛前事务！");
         System.out.println("经 纪人正在处理球星赛前事务！");
     }
 
