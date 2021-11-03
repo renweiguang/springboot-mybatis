@@ -16,7 +16,7 @@ public class AsyncTest
     @Async
     public void longtime()
     {
-        System.out.println("我在执行一项耗时任务");
+        System.out.println("我在执   行一项    耗时任务");
         try
         {
             Thread.sleep(5000);
