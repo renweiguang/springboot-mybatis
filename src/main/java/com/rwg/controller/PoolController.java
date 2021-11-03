@@ -6,19 +6,16 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.concurrent.ExecutionException;
 
 @RestController
-public class PoolController {
+public class PoolController
+{
     @Autowired
     private BootService bootService;
 
     @RequestMapping("/pool")
-    public String pool() {
-        for (int i = 0; i < 100; i++) {
-    public String pool() throws InterruptedException
+    public String pool()
     {
         for (int i = 0; i < 100; i++)
         {
@@ -29,22 +26,22 @@ public class PoolController {
     }
 
     @RequestMapping("/poolTask/{n}")
-    public String poolTask(@PathVariable int n) {
+    public String poolTask(@PathVariable int n)
+    {
         long startTime = System.currentTimeMillis();
-        try {
+        try
+        {
             bootService.testPoolTaskExecutor(n);
-        } catch (InterruptedException e) {
+        }
+        catch (InterruptedException e)
+        {
             e.printStackTrace();
-        } catch (ExecutionException e) {
+        }
+        catch (ExecutionException e)
+        {
             e.printStackTrace();
         }
         long endTime = System.currentTimeMillis();
         return "poolTask test " + (endTime - startTime) / 1000 + " 秒";
-    }
-
-    @RequestMapping("/aaa")
-    public void aaa() {
-        List<String> list = new ArrayList<>();
-        list.get(0);
     }
 }
