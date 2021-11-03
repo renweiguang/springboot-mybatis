@@ -1,6 +1,7 @@
 package com.rwg.controller;
 
 import com.github.pagehelper.PageInfo;
+import com.rwg.annotation.AppUserInfo;
 import com.rwg.entity.TbUser;
 import com.rwg.service.TbUserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +20,7 @@ public class TbUserController
     @Autowired
     private TbUserService tbUserService;
 
+    @AppUserInfo
     @RequestMapping("/list")
     public PageInfo<TbUser> list(@RequestParam(value = "page", required = false, defaultValue = "1") int page)
     {

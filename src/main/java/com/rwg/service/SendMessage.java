@@ -11,10 +11,15 @@ import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
-@Order(value = 99)
+@Order(value = -1)
 public class SendMessage implements RepairCreatePostConsumer {
     @Override
     public void postHandler(String repairId) {
         System.out.println("为报修单" + repairId + "发送消息");
+    }
+
+    @Override
+    public boolean support(String xxx) {
+        return true;
     }
 }

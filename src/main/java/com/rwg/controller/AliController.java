@@ -5,7 +5,6 @@ import com.rwg.entity.AliGetTokenReqDTO;
 import com.rwg.entity.AliGetTokenResDTO;
 import com.rwg.entity.AliVerifyTokenResDTO;
 import com.rwg.entity.User;
-import com.rwg.entity.XzResDTO;
 import com.rwg.service.UserServiceImpl;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -16,4 +16,9 @@ public class SendInvoice implements RepairCreatePostConsumer {
     public void postHandler(String repairId) {
         System.out.println("为报修单" + repairId + "发送发票");
     }
+
+    @Override
+    public boolean support(String xxx) {
+        return true;
+    }
 }

@@ -3,10 +3,7 @@ package com.rwg.controller;
 import com.rwg.service.ViennaService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.concurrent.ExecutionException;
 
@@ -38,7 +35,7 @@ public class ViennaController
 
 
     @PostMapping("/returnTestBooking")
-    public String returnTestBook(@RequestParam(name = "order") String order)
+    public String returnTestBook(@RequestBody String order)
             throws ExecutionException, InterruptedException
     {
         String returnString = viennaService.returnHotelOrderBooking();

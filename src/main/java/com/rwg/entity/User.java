@@ -17,5 +17,6 @@ public class User
     @JSONField(name = "Name")
     private String name;
 
+    @JSONField(name = "Pwd")
     private String pwd;
 }

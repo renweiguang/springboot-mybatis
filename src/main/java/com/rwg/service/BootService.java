@@ -8,6 +8,7 @@ import javax.annotation.Resource;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutionException;
@@ -25,7 +26,7 @@ public class BootService {
 
     public int testPoolTaskExecutor(int n) throws InterruptedException, ExecutionException {
 
-        List<Future<Integer>> futures = new ArrayList<Future<Integer>>();
+        ArrayList<Future<Integer>> futures = new ArrayList<>();
         CountDownLatch countDownLatch = new CountDownLatch(n);
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         int sum = 0;
@@ -33,19 +34,20 @@ public class BootService {
             final int index = i;
             final Future<Integer> future = poolTaskExecutor.submit(() ->
             {
-
                 Thread.sleep(2000);
                 System.out.println(
                         simpleDateFormat.format(new Date()) + " " + Thread.currentThread().getName() + " 执行 " + index);
                 countDownLatch.countDown();
-
                 return index;
             });
-
             futures.add(future);
         }
+
         // 加上他说明主线程等待线程池执行结束后，在执行下面，就不会出现资源没准备好现象，如果删掉，会出现。
         countDownLatch.await();
+
+        System.out.println("-------------------------------------------------------------------------------------------");
+
 
         /**
          * 这个例子完美展现future 如果get不到结果，会阻塞。
@@ -56,7 +58,6 @@ public class BootService {
             }
             System.out.println(future.get());
         }
-
         return sum;
     }
 }

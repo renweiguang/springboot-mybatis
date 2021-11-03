@@ -11,4 +11,7 @@ public interface RepairCreatePostConsumer {
      * @param repairId 报修单ID
      */
     void postHandler(String repairId);
+
+    boolean support(String xxx);
+
 }

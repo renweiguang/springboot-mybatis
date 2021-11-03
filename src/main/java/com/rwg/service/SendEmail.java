@@ -19,4 +19,9 @@ public class SendEmail implements RepairCreatePostConsumer {
     public void postHandler(String repairId) {
         System.out.println("为报修单" + repairId + "发送邮件");
     }
+
+    @Override
+    public boolean support(String xxx) {
+        return true;
+    }
 }

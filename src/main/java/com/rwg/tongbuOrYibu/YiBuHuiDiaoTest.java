@@ -15,11 +15,6 @@ class YiBuHuiDiaoTest
     @GetMapping("/testYiBuHuiDiao")
     public void contextLoads() throws Exception
     {
-        /*
-         * myTask.doTaskOne();
-         * myTask.doTaskTwo();
-         * myTask.doTaskThree();
-         */
         long start = System.currentTimeMillis();
         Future<String> task1 = myTask.doTaskOne();
         Future<String> task2 = myTask.doTaskTwo();
