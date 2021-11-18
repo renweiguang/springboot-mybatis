@@ -12,25 +12,19 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
 
-public class postProcessEnvironment implements EnvironmentPostProcessor
-{
+public class postProcessEnvironment implements EnvironmentPostProcessor {
     @Override
-    public void postProcessEnvironment(ConfigurableEnvironment environment, SpringApplication application)
-    {
+    public void postProcessEnvironment(ConfigurableEnvironment environment, SpringApplication application) {
         String path = "C:\\Users\\renwg\\Desktop\\axis_cfg.properties";
-        File file  = new File(path);
-        if (!file.exists())
-        {
+        File file = new File(path);
+        if (!file.exists()) {
             System.out.println("配置文件 axis_cfg.properties 不存在！");
             return;
         }
         Properties prop = new Properties();
-        try(InputStream is = new FileInputStream(file))
-        {
+        try (InputStream is = new FileInputStream(file)) {
             prop.load(is);
-        }
-        catch (IOException e)
-        {
+        } catch (IOException e) {
             e.printStackTrace();
         }
         MutablePropertySources propertySources = environment.getPropertySources();

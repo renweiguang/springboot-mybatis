@@ -14,11 +14,9 @@ import java.util.concurrent.ThreadPoolExecutor;
 @Configuration
 @EnableAsync
 @Slf4j
-public class ExecutorConfig1
-{
+public class ExecutorConfig1 {
     @Bean
-    public Executor executor1()
-    {
+    public Executor executor1() {
         ThreadPoolTaskExecutor executor = new ThreadPoolTaskExecutor();
         executor.setThreadNamePrefix("test-schedule1-");
         executor.setMaxPoolSize(20);
@@ -27,9 +25,9 @@ public class ExecutorConfig1
         executor.setRejectedExecutionHandler(new ThreadPoolExecutor.CallerRunsPolicy());
         return executor;
     }
+
     @Bean
-    public Executor executor2()
-    {
+    public Executor executor2() {
         ThreadPoolTaskExecutor executor = new ThreadPoolTaskExecutor();
         executor.setThreadNamePrefix("test-schedule2-");
         executor.setMaxPoolSize(20);
@@ -42,16 +40,15 @@ public class ExecutorConfig1
     // 间隔1秒执行一次
     @Async("executor1")
     @Scheduled(cron = "0/10 * * * * ?")
-    public void method1()
-    {
+    public void method1() {
         log.info("——————————method1 start——————————");
         log.info("——————————method1 end——————————");
     }
+
     // 间隔1秒执行一次
     @Scheduled(cron = "0/10 * * * * ?")
     @Async("executor2")
-    public void method2()
-    {
+    public void method2() {
         log.info("——————————method2 start——————————");
         log.info("——————————method2 end——————————");
     }

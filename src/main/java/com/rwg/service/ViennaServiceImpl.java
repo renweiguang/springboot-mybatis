@@ -31,7 +31,6 @@ public class ViennaServiceImpl implements ViennaService {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-
         log.info("我刚执行完订单处理");
 
     }
