@@ -167,6 +167,17 @@
             <artifactId>spring-cloud-context</artifactId>
             <version>2.1.4.RELEASE</version>
         </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.13</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.13</version>
+        </dependency>
     </dependencies>
 
     <dependencyManagement>
