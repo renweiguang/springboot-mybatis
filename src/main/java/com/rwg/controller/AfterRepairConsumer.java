@@ -17,10 +17,8 @@ import java.util.List;
  */
 
 /**
- * 组合模式  作用
+ * 模板模式  作用
  */
-
-
 @RestController
 @RequestMapping(value = "/pc/api/v1/monitor")
 @AllArgsConstructor
@@ -36,6 +34,7 @@ public class AfterRepairConsumer implements RepairCreatePostConsumer {
 
         //按理说也会将自己注入（因为自己也实现了这个接口了），但是@resource注解为了防止循环注入，将本身剔除了。。。
         if (CollectionUtil.isNotEmpty(postConsumers)) {
+            System.out.println(postConsumers);
             postConsumers.forEach(e -> {
                 if (e.support(repairId)) {
                     e.postHandler(repairId);

@@ -9,17 +9,9 @@ import org.springframework.scheduling.annotation.EnableAsync;
 @EnableAsync
 @SpringBootApplication
 // @EnableScheduling
-public class SpringbootMybatiisApplication extends SpringBootServletInitializer
-{
+public class SpringbootMybatiisApplication extends SpringBootServletInitializer {
 
-    public static void main(String[] args)
-    {
+    public static void main(String[] args) {
         SpringApplication.run(SpringbootMybatiisApplication.class, args);
-    }
-
-    @Override
-    protected SpringApplicationBuilder configure(SpringApplicationBuilder builder)
-    {
-        return builder.sources(SpringbootMybatiisApplication.class);
     }
 }

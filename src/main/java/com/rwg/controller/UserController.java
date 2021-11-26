@@ -3,6 +3,7 @@ package com.rwg.controller;
 import com.alibaba.fastjson.JSONObject;
 import com.rwg.entity.AliGetTokenReqDTO;
 import com.rwg.entity.AliGetTokenResDTO;
+import com.rwg.entity.AnnoUser;
 import com.rwg.entity.User;
 import com.rwg.service.UserService;
 import io.swagger.annotations.Api;
@@ -121,6 +122,8 @@ public class UserController {
 
     @GetMapping("/testMap")
     public List<User> testMap() {
+        AnnoUser annoUser =  new AnnoUser();
+        System.out.println(annoUser);
         int[] ids = {1, 2, 3, 6};
         log.info("ids的值为{}", ids);
         Map<String, Object> map = new HashMap<>();

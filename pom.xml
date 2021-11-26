@@ -5,7 +5,7 @@
     <groupId>com.xyj</groupId>
     <artifactId>springboot-mybatiis</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <packaging>war</packaging>
+    <packaging>jar</packaging>
     <name>springboot-mybatiis</name>
     <description>Demo project for Spring Boot</description>
 
@@ -176,5 +176,4 @@
             </plugin>
         </plugins>
     </build>
-
 </project>

@@ -15,16 +15,15 @@ import java.util.concurrent.ExecutionException;
 
 /**
  * 模仿维也纳下单模块，异步下单直接返回新订单的状态。
- *
- *
+ * <p>
+ * <p>
  * 使用线程池下单。。。哈哈哈
  */
 
 @Slf4j
 @RestController
 @RequestMapping("order")
-public class ViennaController
-{
+public class ViennaController {
     @Autowired
     private ViennaService viennaService;
 
@@ -33,8 +32,7 @@ public class ViennaController
     JbossConfig config;
 
     @PostMapping("/testBooking")
-    public String testBook(@RequestParam(name = "order") String order)
-    {
+    public String testBook(@RequestBody String order) {
         log.info(config.getUsername());
         String returnString = viennaService.hotelOrderBooking();
         log.info(returnString);
@@ -44,8 +42,7 @@ public class ViennaController
 
     @PostMapping("/returnTestBooking")
     public String returnTestBook(@RequestBody String order)
-            throws ExecutionException, InterruptedException
-    {
+            throws ExecutionException, InterruptedException {
         String returnString = viennaService.returnHotelOrderBooking();
         log.info(returnString);
 
