@@ -12,3 +12,5 @@ spring:
     password: root
     #虚拟host 可以不设置,使用server默认host
     virtual-host: JCcccHost
+mybatis-plus:
+  mapper-locations: classpath:mybatis/mapper/*.xml
