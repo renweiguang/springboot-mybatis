@@ -1,6 +1,8 @@
 package com.rwg.controller;
 
+import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.rwg.entity.Article;
+import com.rwg.entity.EntityQo;
 import com.rwg.service.ArticleDaoService;
 import com.rwg.service.ArticleService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +26,11 @@ public class ArticleController {
     @RequestMapping("selectArticle")
     public String selectArticle() {
         return articleDaoService.lambdaQuery().eq(Article::getTitle, "测试").one().getContent();
+    }
+
+    @RequestMapping("selectIpageArticle")
+    public IPage<Article> selectIpageArticle() {
+        return articleDaoService.getPageByCondition(EntityQo.builder().title("测试").build());
     }
 }
 
