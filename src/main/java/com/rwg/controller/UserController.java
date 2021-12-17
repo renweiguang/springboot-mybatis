@@ -122,7 +122,7 @@ public class UserController {
 
     @GetMapping("/testMap")
     public List<User> testMap() {
-        AnnoUser annoUser =  new AnnoUser();
+        AnnoUser annoUser = new AnnoUser();
         System.out.println(annoUser);
         int[] ids = {1, 2, 3, 6};
         log.info("ids的值为{}", ids);
@@ -142,7 +142,7 @@ public class UserController {
     public String addUserList(@RequestBody List<User> userList) {
         System.out.println(userList);
         System.out.println(JSONObject.toJSONString(userList));
-        userList.stream().forEach(r -> userService.addUser(r));
+        userList.stream().forEach(userService::addUser);
         return "addUserList";
     }
 

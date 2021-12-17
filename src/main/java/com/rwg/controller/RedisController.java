@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @Slf4j
 @RestController
-public class SpringBootController {
+public class RedisController {
 
     @Autowired
     private RedisUtils redisUtils;

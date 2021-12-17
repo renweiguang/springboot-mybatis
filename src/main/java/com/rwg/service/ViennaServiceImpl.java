@@ -20,7 +20,7 @@ public class ViennaServiceImpl implements ViennaService {
 
     @Override
     public String hotelOrderBooking() {
-        // 先返回rwg，然后线程池异步执行里面的逻辑。和之前的维也纳下单也是先返回新订单的状态，然后后台再去处理，然后推送到rabbitMq
+        // 先返回新订单状态，然后线程池异步执行里面的逻辑。和之前的维也纳下单也是先返回新订单的状态，然后后台再去处理，然后推送到rabbitMq
         viennaBookingPool.execute(() -> excuteBook());
         return "直接返回新订单状态";
     }

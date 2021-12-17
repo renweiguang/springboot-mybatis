@@ -19,8 +19,6 @@ public class RedisUtils {
     @Autowired
     private RedisTemplate redisTemplate;
 
-    @Autowired
-    private StringRedisTemplate stringRedisTemplate;
 
     /**
      * 写入缓存
