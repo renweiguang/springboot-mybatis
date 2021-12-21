@@ -1,5 +1,5 @@
 server:
-  port: 8022
+  port: 8082
 spring:
   #给项目来个名字
   application:
@@ -14,3 +14,4 @@ spring:
     virtual-host: JCcccHost
 mybatis-plus:
   mapper-locations: classpath:mybatis/mapper/*.xml
+
