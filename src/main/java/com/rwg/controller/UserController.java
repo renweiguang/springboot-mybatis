@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -269,7 +270,7 @@ public class UserController {
         } else {
             aliResDTO = AliGetTokenResDTO.builder()
                     .success(false)
-                    .code("500")
+                    .code("500000")
                     .message(null)
                     .requestId(null)
                     .data(null)
@@ -277,4 +278,18 @@ public class UserController {
         }
         return aliResDTO;
     }
+
+
+    @GetMapping(path = "test")
+    public void test() {
+        List list = new ArrayList();
+        try {
+            list.get(5);
+        }catch (Exception e){
+            log.info("請求{}失敗...", "小桔", e);
+        }
+
+    }
+
+
 }
