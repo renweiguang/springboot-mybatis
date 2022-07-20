@@ -2,6 +2,8 @@ package com.rwg.service;
 
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.toolkit.StringUtils;
+import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.rwg.entity.Article;
 import com.rwg.mapper.ArticleMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
 @Service
 public class ArticleService {
@@ -29,7 +32,8 @@ public class ArticleService {
      * 2.通过QueryWrapper查询数量
      */
     public Integer selectArticleCount(){
-        return articleMapper.selectCount(new QueryWrapper<Article>().eq("title","测试"));
+        return articleMapper.selectCount(Wrappers.<Article>query().lambda()
+               .eq(Article::getTitle,"测试"));
     }
 
     /**

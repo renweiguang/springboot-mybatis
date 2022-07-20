@@ -11,6 +11,8 @@ import java.util.Map;
 public interface UserMapper
 {
 
+    User selectByCondition();
+
     List<User> queryUserList();
 
     User queryUserById(int id);

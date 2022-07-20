@@ -22,4 +22,8 @@ public class User
     @JSONField(name = "Pwd")
     @JsonProperty("Pwd")
     private String pwd;
+
+    private String phone;
+
+    private Integer userId;
 }

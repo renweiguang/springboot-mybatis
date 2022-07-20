@@ -67,4 +67,9 @@ public class PerSonServiceImpl implements UserService
         return 0;
     }
 
+    @Override
+    public User selectByCondition() {
+        return null;
+    }
+
 }

@@ -5,6 +5,12 @@
 
 <mapper namespace="com.rwg.mapper.UserMapper">
 
+
+    <select id="selectByCondition" resultType="com.rwg.entity.User">
+ select u.*,p.phone,p.user_id from user u  Left JOIN user_phone p on u.id = p.user_id where u.id = 4
+    </select>
+
+
     <select id="selectByUserAndPassword" resultType="com.rwg.entity.User">
         select *
         from user where name = #{name} and pwd = #{pwd}
@@ -69,10 +75,10 @@
     </select>
 
     <!--<select id="testLike" resultType="com.rwg.entity.User">-->
-        <!--select *-->
-        <!--from user-->
-        <!--where pwd like CONCAT('%', "R110", '%')-->
-          <!--and pwd not like CONCAT('%', "R110108", '%')-->
+    <!--select *-->
+    <!--from user-->
+    <!--where pwd like CONCAT('%', "R110", '%')-->
+    <!--and pwd not like CONCAT('%', "R110108", '%')-->
     <!--</select>-->
 
     <select id="testLike" resultType="com.rwg.entity.User">
@@ -81,7 +87,7 @@
     where pwd like CONCAT('%',"R110105",'%') or pwd like CONCAT('%',"R110106",'%');
     </select>
 
-    <insert id="insertReturnPrimaryKey" useGeneratedKeys="true" keyProperty="Id"
+    <insert id="insertReturnPrimaryKey" useGeneratedKeys="true" keyProperty="id"
             parameterType="com.rwg.entity.User">
         INSERT INTO user(name, pwd)
         values (#{name}, #{pwd})

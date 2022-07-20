@@ -35,4 +35,6 @@ public interface UserService
 
     int insertUser(User user);
 
+
+    User selectByCondition();
 }

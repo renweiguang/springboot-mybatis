@@ -69,6 +69,12 @@ public class UserServiceImpl implements UserService {
         return userMapper.insertUser(user);
     }
 
+    @Override
+    public User selectByCondition() {
+        return userMapper.selectByCondition();
+    }
+
+
     public boolean login(User user) {
         if (userMapper.selectByUserAndPassword(user) != null) {
             return true;

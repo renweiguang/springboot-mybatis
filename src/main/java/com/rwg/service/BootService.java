@@ -49,7 +49,7 @@ public class BootService {
             futures.add(future);
         }
         // 加上他说明主线程等待线程池执行结束后，在执行下面，就不会出现资源没准备好现象，如果删掉，会出现。
-        countDownLatch.await();
+//        countDownLatch.await();
 
         /**
          * 这个例子完美展现future 如果get不到结果，会阻塞。

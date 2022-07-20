@@ -67,7 +67,7 @@ public class UserController {
         return userList;
     }
 
-    @ApiOperation(value = "登录", notes = "登录")
+    @ApiOperation(value = "登录", notes = "登录1")
     @GetMapping("login")
     public boolean login(HttpSession session) {
         User user = User.builder()
@@ -111,8 +111,6 @@ public class UserController {
         hashMap.put(1, name);
         hashMap.put(2, age);
         hashMap.put(3, age);
-        System.out.println(serverPort);
-        System.out.println(hashMap);
         return hashMap;
     }
 
@@ -137,6 +135,12 @@ public class UserController {
     public List<User> queryUserList() {
         List<User> userList = userService.queryUserList();
         return userList;
+    }
+
+    @GetMapping("/queryDuoBiaoLianCha")
+    public User selectByCondition() {
+        User user = userService.selectByCondition();
+        return user;
     }
 
     @PostMapping("/addUserList")
@@ -207,11 +211,11 @@ public class UserController {
         return userService.testLike();
     }
 
-    @GetMapping("/updateUser")
-    public String updateUser() {
-        userService.updateUser(new User(888, "xyj222", "777"));
-        return "updateUser";
-    }
+//    @GetMapping("/updateUser")
+//    public String updateUser() {
+//        userService.updateUser(new User(888, "xyj222", "777"));
+//        return "updateUser";
+//    }
 
     @GetMapping(path = "deleteUser")
     public String deleteUser(@RequestParam("id") int id) {

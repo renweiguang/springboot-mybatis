@@ -22,7 +22,7 @@ public class RedisController {
     private RedisUtils redisUtils;
 
     @RequestMapping(value = "/hello/{id}")
-    public String hello(@PathVariable(value = "id") String id) {
+    public String hello(@PathVariable(value = "id") String id)  {
         //查询缓存中是否存在
         boolean hasKey = redisUtils.exists(id);
         String str = "rwggggg";

@@ -20,7 +20,7 @@ public class MyTaskYiBuHuiDiao {
     public Future<String> doTaskOne() throws Exception {
         System.out.println("开始做任务一");
         long start = System.currentTimeMillis();
-        Thread.sleep(random.nextInt(5000));
+        Thread.sleep(random.nextInt(50000));
         long end = System.currentTimeMillis();
         System.out.println("完成任务一，耗时：" + (end - start) + "毫秒");
         return new AsyncResult<>("任务一完成");
