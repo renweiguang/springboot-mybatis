@@ -30,7 +30,7 @@ public class AfterRepairConsumer implements RepairCreatePostConsumer {
 
     @GetMapping(value = "/create")
     public String create() {
-        final String repairId = "1";
+        final String repairId = "3";
 
         //按理说也会将自己注入（因为自己也实现了这个接口了），但是@resource注解为了防止循环注入，将本身剔除了。。。
         if (CollectionUtil.isNotEmpty(postConsumers)) {
