@@ -37,7 +37,6 @@ public class BootService {
             final int index = i;
             final Future<Integer> future = poolTaskExecutor.submit(() ->
             {
-
                 Thread.sleep(2000);
                 System.out.println(
                         simpleDateFormat.format(new Date()) + " " + Thread.currentThread().getName() + " 执行 " + index);

@@ -31,7 +31,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Configuration
 @EnableCaching
-@RefreshScope
+//@RefreshScope
 public class RedisConfig extends CachingConfigurerSupport {
     @Value("${spring.redis.host}")
     private String host;

@@ -1,14 +1,11 @@
 package com.rwg.controller;
 
-import com.rwg.config.JbossConfig;
 import com.rwg.service.ViennaService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.concurrent.ExecutionException;
@@ -27,13 +24,9 @@ public class ViennaController {
     @Autowired
     private ViennaService viennaService;
 
-    // 将配置文件置于外部
-    @Autowired
-    JbossConfig config;
 
     @PostMapping("/testBooking")
     public String testBook(@RequestBody String order) {
-        log.info(config.getUsername());
         String returnString = viennaService.hotelOrderBooking();
         log.info(returnString);
 
