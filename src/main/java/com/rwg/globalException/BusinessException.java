@@ -9,34 +9,37 @@ public class BusinessException extends RuntimeException {
     /**
      * 错误状态码
      */
-    protected Integer errorCode;
+    protected Integer code;
+
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
+    }
+
+    public Integer getCode() {
+        return code;
+    }
+
+    public void setCode(Integer code) {
+        this.code = code;
+    }
+
+    @Override
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
+
     /**
      * 错误提示
      */
-    protected String errorMsg;
+    protected String message;
 
-    public BusinessException() {
-
-    }
 
     public BusinessException(Integer errorCode, String errorMsg) {
-        this.errorCode = errorCode;
-        this.errorMsg = errorMsg;
-    }
-
-    public Integer getErrorCode() {
-        return errorCode;
-    }
-
-    public void setErrorCode(Integer errorCode) {
-        this.errorCode = errorCode;
-    }
-
-    public String getErrorMsg() {
-        return errorMsg;
-    }
-
-    public void setErrorMsg(String errorMsg) {
-        this.errorMsg = errorMsg;
+        this.code = errorCode;
+        this.message = errorMsg;
     }
 }

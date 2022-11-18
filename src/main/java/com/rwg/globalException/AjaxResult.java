@@ -30,8 +30,8 @@ public class AjaxResult {
     public static AjaxResult defineError(BusinessException de) {
         AjaxResult result = new AjaxResult();
         result.setSuccess(false);
-        result.setCode(de.getErrorCode());
-        result.setMsg(de.getErrorMsg());
+        result.setCode(de.getCode());
+        result.setMsg(de.getMessage());
         result.setData(null);
         return result;
     }

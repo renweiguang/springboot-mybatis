@@ -16,7 +16,7 @@ public class GlobalExceptionHandler {
      */
     @ExceptionHandler(value = BusinessException.class)
     public AjaxResult bizExceptionHandler(BusinessException e) {
-        log.error(e.getErrorMsg(), e);
+        log.error(e.getMessage(), e);
         return AjaxResult.defineError(e);
     }
 
