@@ -37,8 +37,7 @@ import java.util.Map;
 // @Api和ApiOpertion都是来自于swagger包依赖，他们的作用是生成接口文档。
 @Api(value = "UserController", description = "用户界面")
 
-public class UserController
-{
+public class UserController {
 
     // 读取配置文件中属性的值
     @Value("${server.port}")
@@ -56,22 +55,19 @@ public class UserController
     private UserService service;
 
     @GetMapping("/serviceKuohaotest")
-    public String serviceKuohaotest()
-    {
+    public String serviceKuohaotest() {
         return service.testServiceKuoHao();
     }
 
     @PostMapping("listDemo")
-    public List<User> listDemo(@RequestBody List<Integer> list)
-    {
+    public List<User> listDemo(@RequestBody List<Integer> list) {
         List<User> userList = userService.queryListDemo(list);
         return userList;
     }
 
     @ApiOperation(value = "登录", notes = "登录")
     @GetMapping("login")
-    public boolean login(HttpSession session)
-    {
+    public boolean login(HttpSession session) {
         User user = User.builder()
                 .name("asd")
                 .pwd("R1101056071")
@@ -84,23 +80,20 @@ public class UserController
 
     // localhost:8080/get_method/mode_1/tony/89
     @PostMapping(path = "mode_1/{name}/{age}")
-    public Map getUrlPathParam(@PathVariable("name") String name, @PathVariable String age, @RequestBody String ag)
-    {
+    public Map getUrlPathParam(@PathVariable("name") String name, @PathVariable String age, @RequestBody String ag) {
         System.out.println(ag);
-        return new HashMap()
-        {
+        return new HashMap() {
             {
                 put("name", name);
                 put("age", age);
             }
         };
     }
+
     // localhost:8080/get_method/mode_2?name=tony&age=89
     @GetMapping("mode_2")
-    public Map getQueryParam(@RequestParam(name = "name") String name, @RequestParam(defaultValue = "100") String age)
-    {
-        return new HashMap()
-        {
+    public Map getQueryParam(@RequestParam(name = "name") String name, @RequestParam(defaultValue = "100") String age) {
+        return new HashMap() {
             {
                 put("name", name);
                 put("age", age);
@@ -111,8 +104,7 @@ public class UserController
 
     @GetMapping("mode_3")
     public Map testHashMapResult(@RequestParam(name = "name") String name,
-            @RequestParam(defaultValue = "100") String age)
-    {
+                                 @RequestParam(defaultValue = "100") String age) {
         HashMap<Integer, String> hashMap = new HashMap();
         hashMap.put(1, name);
         hashMap.put(2, age);
@@ -123,15 +115,13 @@ public class UserController
     }
 
     @PostMapping("/testArray")
-    public List<User> testArray(@RequestBody int[] array)
-    {
+    public List<User> testArray(@RequestBody int[] array) {
         return userService.testArray(array);
     }
 
     @GetMapping("/testMap")
-    public List<User> testMap()
-    {
-        int[] ids = { 1, 2, 3, 6 };
+    public List<User> testMap() {
+        int[] ids = {1, 2, 3, 6};
         log.info("ids的值为{}", ids);
         Map<String, Object> map = new HashMap<>();
         map.put("id", ids);
@@ -140,15 +130,13 @@ public class UserController
     }
 
     @GetMapping("/queryUserList")
-    public List<User> queryUserList()
-    {
+    public List<User> queryUserList() {
         List<User> userList = userService.queryUserList();
         return userList;
     }
 
     @PostMapping("/addUserList")
-    public String addUserList(@RequestBody List<User> userList)
-    {
+    public String addUserList(@RequestBody List<User> userList) {
         System.out.println(userList);
         System.out.println(JSONObject.toJSONString(userList));
         userList.stream().forEach(r -> userService.addUser(r));
@@ -156,16 +144,14 @@ public class UserController
     }
 
     @PostMapping("/addUser")
-    public String addUser(@RequestBody User user)
-    {
+    public String addUser(@RequestBody User user) {
         userService.addUser(user);
         System.out.println("addUser方法執行完了");
         return "addUser";
     }
 
     @PostMapping("/addUser1")
-    public String addUser(@RequestBody String jsonString)
-    {
+    public String addUser(@RequestBody String jsonString) {
 
         JSONObject jsonObject = JSONObject.parseObject(jsonString);
 
@@ -176,8 +162,7 @@ public class UserController
     }
 
     @PostMapping("/addJsonStringUser")
-    public String addJsonStringUser(@RequestBody String jsonStringUser)
-    {
+    public String addJsonStringUser(@RequestBody String jsonStringUser) {
         User user = new User();
         JSONObject jsonObject = JSONObject.parseObject(jsonStringUser);
         user.setName(jsonObject.getString("name"));
@@ -188,8 +173,7 @@ public class UserController
     }
 
     @PostMapping("/addJsonListStringUser")
-    public String addJsonListStringUser(@RequestBody String jsonStringUser)
-    {
+    public String addJsonListStringUser(@RequestBody String jsonStringUser) {
         List<User> userList = JSONObject.parseArray(jsonStringUser, User.class);
         userList.stream().forEach(r -> userService.addUser(r));
         System.out.println("addUser方法執行完了");
@@ -197,8 +181,7 @@ public class UserController
     }
 
     @PostMapping("/selectRecByPwd")
-    public List<User> selectRecByPwd(@RequestBody String pwd)
-    {
+    public List<User> selectRecByPwd(@RequestBody String pwd) {
         JSONObject jsonObject = JSONObject.parseObject(pwd);
         String pwd1 = jsonObject.getString("pwd");
         List<User> userList = userService.selectRecByPwd(pwd1);
@@ -206,8 +189,7 @@ public class UserController
     }
 
     @PostMapping("/testJsonField")
-    public String testJsonField(@RequestBody String cmdOpt)
-    {
+    public String testJsonField(@RequestBody String cmdOpt) {
         // JSONObject.parseObject不在乎传参大小写，字母对上就行
         User user = JSONObject.parseObject(cmdOpt, User.class);
         System.out.println(user);
@@ -215,21 +197,18 @@ public class UserController
     }
 
     @GetMapping("/testLike")
-    public List<User> testLike()
-    {
+    public List<User> testLike() {
         return userService.testLike();
     }
 
     @GetMapping("/updateUser")
-    public String updateUser()
-    {
+    public String updateUser() {
         userService.updateUser(new User(888, "xyj222", "777"));
         return "updateUser";
     }
 
     @GetMapping(path = "deleteUser")
-    public String deleteUser(@RequestParam("id") int id)
-    {
+    public String deleteUser(@RequestParam("id") int id) {
         userService.deleteUser(id);
         return "deleteUser";
     }
@@ -238,8 +217,7 @@ public class UserController
     // 他会将返回的之间塞入传进去的实体里，我们需要解析实体类。
 
     @GetMapping("/testInsertReturnPrimaryKey")
-    public int insertReturnPrimaryKey()
-    {
+    public int insertReturnPrimaryKey() {
         User user = new User();
         user.setName("xiaoxiaobaobao");
         user.setPwd("11");
@@ -250,8 +228,7 @@ public class UserController
     }
 
     @PostMapping(value = "/getToken", produces = "application/json;charset=UTF-8")
-    public AliGetTokenResDTO getToken(@RequestBody AliGetTokenReqDTO aliReqDTO)
-    {
+    public AliGetTokenResDTO getToken(@RequestBody AliGetTokenReqDTO aliReqDTO) {
         AliGetTokenResDTO aliResDTO;
 
         User user = User.builder()
@@ -262,8 +239,7 @@ public class UserController
         boolean login = userService.login(user);
 
         // 如果登录成功
-        if (login)
-        {
+        if (login) {
             aliResDTO = AliGetTokenResDTO.builder()
                     .success(true)
                     .code("200")
@@ -271,9 +247,7 @@ public class UserController
                     .requestId("EBF5D894-E920-4C6E-BCD3-A803AD5FDD6C")
                     .data(null)
                     .build();
-        }
-        else
-        {
+        } else {
             aliResDTO = AliGetTokenResDTO.builder()
                     .success(false)
                     .code("500")
